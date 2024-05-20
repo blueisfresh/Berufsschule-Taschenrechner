@@ -35,7 +35,12 @@
                 {
                     taschenrechner.SetInput();
                     taschenrechner.SetComma();
-                } // TODO Negative Number
+                } else if (!taschenrechner.inputFlag && key.KeyChar == '-')
+                {
+                    taschenrechner.SetInput();
+                    taschenrechner.SetNumber(key.KeyChar);
+
+                }
                 else if (key.KeyChar == '+' || key.KeyChar == '-' || key.KeyChar == '*' || key.KeyChar == '/')
                 {
                     taschenrechner.AddOperator(key.KeyChar);

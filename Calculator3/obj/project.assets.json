@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Git\\Github\\Calculator3\\Calculator3\\Calculator3.csproj",
+      "projectUniqueName": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj",
       "projectName": "Calculator3",
-      "projectPath": "C:\\Work\\Git\\Github\\Calculator3\\Calculator3\\Calculator3.csproj",
+      "projectPath": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj",
       "packagesPath": "C:\\Users\\elias\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Git\\Github\\Calculator3\\Calculator3\\obj\\",
+      "outputPath": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

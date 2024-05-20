@@ -15,7 +15,7 @@ namespace Calculator3
     {
         // Attributes
         string inputString = "0"; // input number, as a string
-        bool inputFlag = true; // number or an operator is being entered
+        public bool inputFlag = true; // number or an operator is being entered
         decimal buffer = 0; // Zwischensumme
 
         // Stacks
