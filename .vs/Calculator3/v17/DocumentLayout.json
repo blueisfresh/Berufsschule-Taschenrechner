@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\",
+  "WorkspaceRootPath": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|c:\\work\\git\\github\\berufsschule-taschenrechner\\calculator3\\classtaschenrechner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\calculator3\\classtaschenrechner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|solutionrelative:calculator3\\classtaschenrechner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|c:\\work\\git\\github\\berufsschule-taschenrechner\\calculator3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|c:\\users\\elias\\source\\repos\\berufsschule-taschenrechner-console\\calculator3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA7AF415-F1F9-4BCF-AD7A-06DC239ABE00}|Calculator3\\Calculator3.csproj|solutionrelative:calculator3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -21,33 +21,29 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Program.cs",
+              "RelativeDocumentMoniker": "Calculator3\\Program.cs",
+              "ToolTip": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Program.cs",
+              "RelativeToolTip": "Calculator3\\Program.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwCcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T06:45:35.831Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ClassTaschenrechner.cs",
-              "DocumentMoniker": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\ClassTaschenrechner.cs",
+              "DocumentMoniker": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\ClassTaschenrechner.cs",
               "RelativeDocumentMoniker": "Calculator3\\ClassTaschenrechner.cs",
-              "ToolTip": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\ClassTaschenrechner.cs",
+              "ToolTip": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\ClassTaschenrechner.cs",
               "RelativeToolTip": "Calculator3\\ClassTaschenrechner.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAewGgAAAAMAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAAwA8AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-18T06:46:34.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Program.cs",
-              "RelativeDocumentMoniker": "Calculator3\\Program.cs",
-              "ToolTip": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Program.cs",
-              "RelativeToolTip": "Calculator3\\Program.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwCUAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T06:45:35.831Z",
               "EditorCaption": ""
             }
           ]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj": {}
+    "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Calculator3.csproj": {}
   },
   "projects": {
-    "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj": {
+    "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Calculator3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj",
+        "projectUniqueName": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Calculator3.csproj",
         "projectName": "Calculator3",
-        "projectPath": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\Calculator3.csproj",
+        "projectPath": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\Calculator3.csproj",
         "packagesPath": "C:\\Users\\elias\\.nuget\\packages\\",
-        "outputPath": "C:\\Work\\Git\\Github\\Berufsschule-Taschenrechner\\Calculator3\\obj\\",
+        "outputPath": "C:\\Users\\elias\\source\\repos\\Berufsschule-Taschenrechner-Console\\Calculator3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

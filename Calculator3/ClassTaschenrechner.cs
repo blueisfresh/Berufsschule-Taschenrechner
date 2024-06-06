@@ -1,57 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculator3
+﻿namespace CalculatorEngine
 {
-    // CHANGES
-    // EvaluateStack: Old Version Operands where poped without considering order, wich is incorrect for subtraction and divisions (a - b correct; b - a incorrect)
-    // Old Version called EvaluateStack as long as there were two operands, causing unnecessary evaluations
-    // Simplified logic by recognizing current operator precedence
-
-    public class ClassTaschenrechner
+    public class ClassCalculator
     {
         // Attributes
         string inputString = "0"; // input number, as a string
-        public bool inputFlag = true; // number or an operator is being entered
-        decimal buffer = 0; // Zwischensumme
+        public bool isNumber = true; // input a number or Operator?
+        public decimal buffer = 0; // Subtotal
 
         // Stacks
-        Stack<decimal> operandenStack = new Stack<decimal>();
-        Stack<char> operatorenStack = new Stack<char>();
+        public Stack<decimal> operandsStack = new Stack<decimal>();
+        public Stack<char> operatorsStack = new Stack<char>();
+
+        // History
+        public List<string> history = new List<string>();
 
         // Methods
-        public ClassTaschenrechner()
+        public ClassCalculator()
         {
-            operandenStack.Push(0);
-            operatorenStack.Push('+');
+            operandsStack.Push(0);
+            operatorsStack.Push('+');
         }
 
-        // Returns inputString else top value of operandStack
+        // Returns inputString else top value of operandsStack
         public string GetInputString()
         {
-            if (inputFlag)
+            if (isNumber)
                 return inputString;
-            return operandenStack.Peek().ToString();
+            return operandsStack.Peek().ToString();
         }
 
-        // inputString Builder
-        public void SetNumber(char number)
-        {
-            if (inputString == "0" && number == '0')
-                return;
-            if (inputString == "0")
-                inputString = "";
-            inputString += number;
-        }
 
-        // inputFlag to true, indicates that number is being entered
+        // isNumber to true, indicates that number is being entered
         public void SetInput()
         {
-            if (!inputFlag)
-                inputFlag = true;
+            if (!isNumber)
+                isNumber = true;
         }
 
         public void SetComma()
@@ -61,63 +44,157 @@ namespace Calculator3
                 inputString += ",";
         }
 
+        // inputString Builder
+        public void SetNumber(string number)
+        {
+            if (number.Length > 1)
+            {
+                inputString = number;
+            }
+            else
+            {
+                if (inputString == "0" && number == "0") return;
+                if (inputString == "0") inputString = "";
+                inputString += number;
+            }
+        }
         public void EvaluateStack()
         {
-            // if there are more than 1 operand on the stack perform calculation 
-            // using the top operator from operatorStack
-            if (operandenStack.Count >= 2)
+            // using the top operator from operatorStack to perform calculations
+            while (operatorsStack.Count > 0 && operandsStack.Count >= 2)
             {
-                char oldOp = operatorenStack.Pop();
-                decimal operand2 = operandenStack.Pop();
-                decimal operand1 = operandenStack.Pop();
-
-                switch (oldOp)
+                char oldOp = operatorsStack.Pop();
+                if (oldOp == '(')
                 {
-                    case '+':
-                        buffer = operand1 + operand2;
-                        break;
-                    case '-':
-                        buffer = operand1 - operand2;
-                        break;
-                    case '*':
-                        buffer = operand1 * operand2;
-                        break;
-                    case '/':
-                        buffer = operand1 / operand2;
-                        break;
+                    operatorsStack.Push(oldOp);
+                    break;
                 }
 
-                operandenStack.Push(buffer); // push Intermediate result to stack
+                decimal operand2 = operandsStack.Pop();
+                decimal operand1 = operandsStack.Pop();
+                decimal result = PerformOperation(operand1, operand2, oldOp);
 
-                // If Values are still in the operand Stack than perform the calculation again 
-                if (operatorenStack.Count > 0 && operandenStack.Count >= 2)
+                buffer = result;
+                operandsStack.Push(buffer); // push Intermediate result to stack
+                history.Add($"{operand1} {oldOp} {operand2} = {result}");
+
+                // If values are still in the operand Stack, perform the calculation again
+                if (operatorsStack.Count > 0 && operandsStack.Count >= 2)
                 {
                     EvaluateStack();
                 }
             }
         }
 
+        // Performs arithmetic operations
+        private decimal PerformOperation(decimal operand1, decimal operand2, char operation)
+        {
+            return operation switch
+            {
+                '+' => operand1 + operand2,
+                '-' => operand1 - operand2,
+                '*' => operand1 * operand2,
+                '/' => operand2 == 0 ? throw new DivideByZeroException("Cannot divide by zero.") : operand1 / operand2,
+                _ => throw new InvalidOperationException($"Invalid operator: {operation}")
+            };
+        }
+
         public void AddOperator(char op)
         {
-            inputFlag = false; // Operator will be entered
+            isNumber = false;
 
-            // Convert current input string to decimal & pushes it to the stack
-            decimal lastInputNumber = Convert.ToDecimal(inputString);
-            operandenStack.Push(lastInputNumber);
-
-            // Current Operator is point and dash -> keep pushing to stack
-            if ((op == '*' || op == '/') && (operatorenStack.Peek() == '+' || operatorenStack.Peek() == '-')) 
+            // Prevent pushing zero to the stack unless it is necessary
+            if (inputString != "0" || op == '(' || op == ')')
             {
-                operatorenStack.Push(op);
+                decimal lastInputNumber = Convert.ToDecimal(inputString);
+                // Push only if it's not the start of a parenthesis block with zero
+                if (!(lastInputNumber == 0 && op == '('))
+                {
+                    operandsStack.Push(lastInputNumber);
+                }
             }
-            else // Let all the values in the stack be evaluated
+
+            // Parantheses Evaluation
+            if (op == '(')
+            {
+                operatorsStack.Push(op);
+            }
+            else if (op == ')')
+            {
+                // Continue Evaluating stack until the Parantheses are solved
+                while (operatorsStack.Count > 0 && operatorsStack.Peek() != '(')
+                {
+                    EvaluateStack();
+                }
+
+                if (operatorsStack.Count == 0 || operatorsStack.Peek() != '(')
+                {
+                    throw new InvalidOperationException("Mismatched parentheses.");
+                }
+
+                operatorsStack.Pop(); // Popping opening parantheses
+
+                // After popping '(', push the result of the evaluated expression back onto the operand stack
+                if (operandsStack.Count > 0)
+                {
+                    buffer = operandsStack.Pop();
+                    operandsStack.Push(buffer); // Push result after evaluating parenthesis
+                }
+            }
+
+            // Perform normal calculations
+            else if ((op == '*' || op == '/') && (operatorsStack.Peek() == '+' || operatorsStack.Peek() == '-'))
+            {
+                operatorsStack.Push(op);
+            }
+            else
             {
                 EvaluateStack();
-                operatorenStack.Push(op);
+                operatorsStack.Push(op);
             }
 
-            // Reset current input
+            history.Add($"Operator: {op}");
+
             inputString = "0";
+        }
+
+
+        // Output History 
+        public List<string> GetHistory()
+        {
+            return history;
+        }
+
+        // Trigonometry Methods
+        public string CalculateSine(string input)
+        {
+            decimal lastInputNumber = Convert.ToDecimal(input);
+            double radians = (double)lastInputNumber * (Math.PI / 180);
+            buffer = (decimal)Math.Sin(radians);
+            inputString = buffer.ToString();
+            return inputString;
+        }
+
+        public string CalculateCosine(string input)
+        {
+            decimal lastInputNumber = Convert.ToDecimal(input);
+            double radians = (double)lastInputNumber * (Math.PI / 180);
+            buffer = (decimal)Math.Cos(radians);
+            inputString = buffer.ToString();
+            return inputString;
+        }
+
+        public string CalculateTangent(string input)
+        {
+            decimal lastInputNumber = Convert.ToDecimal(input);
+            double radians = (double)lastInputNumber * (Math.PI / 180);
+            if ((radians / Math.PI) % 0.5 == 0)
+            {
+                throw new InvalidOperationException("Tangent is undefined at this angle.");
+            }
+            buffer = (decimal)Math.Tan(radians);
+            inputString = buffer.ToString();
+            return inputString;
         }
     }
 }
